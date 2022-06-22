@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
-
+        <script src="https://kit.fontawesome.com/88f8deda0e.js" crossorigin="anonymous"></script>
 
     <style>
         *,
@@ -24,7 +24,7 @@
     --fw-bold: 900;
     
     --clr-light: #3f3fbc;
-    --clr-dark: #3a3a3a;
+    --clr-dark: #0d0d0def;
     --clr-accent: #e0ef4d;
     
     --fs-h1: 3rem;
@@ -32,8 +32,8 @@
     --fs-h3: 1.25rem;
     --fs-body: 1rem;
 
-    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
-          0.125em 0.125em 0.125em rgba(0,0,0,.15);
+    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,0.25),
+          0.125em 0.125em 0.125em rgba(0,0,0,0.15);
 }
 
 @media (min-width: 800px) {
@@ -46,6 +46,10 @@
 }
 
 /* General styles */
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     background: var(--clr-light);
@@ -70,12 +74,12 @@ strong { font-weight: var(--fw-bold) }
 
 .btn {
     display: inline-block;
-    padding: .5em 2.5em;
+    padding: 0.5em 2.5em;
     background: var(--clr-accent);
     color: var(--clr-dark);
     text-decoration: none;
     cursor: pointer;
-    font-size: .8rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: var(--fw-bold);
@@ -105,7 +109,7 @@ section {
 }
 
 .section__title {
-    margin-bottom: .25em;
+    margin-bottom: 0.25em;
 }
 
 .section__title--intro {
@@ -124,14 +128,116 @@ section {
 .section__subtitle--intro,
 .section__subtitle--about {
     background: var(--clr-accent);
-    padding: .25em 1em;
+    padding: 0.25em 1em;
     font-family: var(--ff-secondary);
     margin-bottom: 1em;
 }
 
 /* header */
 
-nav { display: none; }
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.logo {
+    max-width: 100px;
+}
+
+.nav {
+    position: fixed;
+    background: var(--clr-dark);
+    color: var(--clr-light);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    
+    transform: translateX(100%);
+    transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
+}
+
+.nav__list {
+    list-style: none;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__link {
+    color: inherit;
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-h2);
+    text-decoration: none;
+}
+
+.nav__link:hover {
+    color: var(--clr-accent);
+}
+
+.nav-toggle {
+    padding: .5em;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    z-index: 1000;
+}
+
+.nav-open .nav {
+    transform: translateX(0);
+}
+
+.nav-open .nav-toggle {
+    position: fixed;
+}
+
+.nav-open .hamburger {
+    transform: rotate(.625turn);
+}
+
+.nav-open .hamburger::before {
+    transform: rotate(90deg) translateX(-6px);
+}
+
+.nav-open .hamburger::after {
+    opacity: 0;
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    background: var(--clr-accent);
+    width: 2em;
+    height: 3px;
+    border-radius: 1em;
+    transition: transform 250ms ease-in-out;
+}
+
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.hamburger::before { top: 6px; }
+.hamburger::after { bottom: 6px; }
 
 /*  Intro section  */
 
@@ -182,7 +288,7 @@ nav { display: none; }
 
 .my-services {
     background-color: var(--clr-dark);
-    background-image: url(img8.jpeg);
+    background-image: url(personal-website/portfolio-images/desert.png);
     background-size: cover;
     background-blend-mode: multiply;
     color: var(--clr-light);
@@ -225,23 +331,163 @@ nav { display: none; }
         margin-left: 2em;
     }
 }
+
+.about-me {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-me__img {
+    box-shadow: var(--bs);
+}
+
+
+@media (min-width: 800px) {
+    .about-me {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        grid-template-areas: 
+            "title img"
+            "subtitle img"
+            "text img";
+        grid-column-gap: 2em;
+    }
+    
+    .section__title--about {
+        grid-area: title;
+    }
+    
+    .section__subtitle--about {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        position: relative;
+        left: -1em;
+        width: calc(100% + 2em);
+        padding-left: 1em;
+        padding-right: calc(200px + 4em);
+    }
+    
+    .about-me__img {
+        grid-area: img;
+        position: relative;
+        z-index: 2;
+    }
+    .about-me__body {
+        position: relative;
+        grid-column: 1 / 1;
+    }
+}
+
+/* My Work */
+
+.my-work {
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+    text-align: center;    
+}
+
+.portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.portfolio__item {
+    background: var(--clr-accent);
+    overflow: hidden;
+}
+
+.portfolio__img {
+    transition: 
+        transform 900ms cubic-bezier(0.5, 0, 0.5, 1),
+        opacity 250ms linear;
+}
+
+.portfolio__item:focus {
+    position: relative;
+    z-index: 2;
+}
+
+.portfolio__img:hover,
+.portfolio__item:focus .portfolio__img {
+    transform: scale(1.2);
+    opacity: 0.5;
+}
+
+/* footer */
+
+.footer {
+    background: #111;
+    color: var(--clr-accent);
+    text-align: center;
+    padding: 2.5em 0;
+    font-size: var(--fs-h3);
+
+}
+
+.footer a { 
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer__link {
+    font-weight: var(--fw-bold);
+}
+
+.footer__link:hover,
+.social-list__link:hover {
+    opacity: 0.7;
+}
+
+.footer__link:hover {
+    text-decoration: underline;
+}
+
+.social-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 2em 0 0;
+    padding: 0;
+}
+
+.social-list__item {
+    margin: 0 0.5em;
+}
+
+.social-list__link {
+    padding: 0.5em;
+}
+
+    /* Individual portfolio item styles */
+
+    .portfolio-item-individual {
+    padding: 0 2em 2em;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.portfolio-item-individual p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
     </style>
     </head>
 
     <body>
         <header>
             <div class="logo">
-                <h4>Jason Fink</h4>
+                <img src="personal-website/portfolio-images/name.png" alt="Jason Fink" draggable="false">
             </div>
-            <button name="toggle" aria-label="toggle navigation">
+            <button class="nav-toggle" aria-label="toggle navigation">
                 <span class="hamburger"></span>
             </button>
             <nav class="nav">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">My Services</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">About Me</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">My Work</a></li>
+                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">What I Do</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About Me</a></li>
+                    <li class="nav__item"><a href="#work" class="nav__link">My Work</a></li>
                 </ul>
             </nav>
         </header>
@@ -252,36 +498,44 @@ nav { display: none; }
             <h1 class="section__title section__title--long">
                 Hi, I am <strong>Jason Fink</strong>
             </h1>
-            <p class="section__subtitle section__subtitle--intro">Front-end dev</p>
-            <img src="profile.png" alt="A picture of me" class="intro__img">
+            <p class="section__subtitle section__subtitle--intro">Aerospace Engineer | Stock Trader</p>
+            <img src="personal-website/portfolio-images/profile.png" alt="A picture of me" class="intro__img">
         </section>
 
 
     <!--My services-->
 
     <section class="my-services" id="services">
-        <h2 class="section__title section__subtitle--services">What I Do</h2>
+        <h2 class="section__title section__subtitle--services">About What I Do</h2>
         <div class="services">
             <div class="service">
-                <h3>Work</h3>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <h3>Aerospace Engineer</h3>
+                <p>I graduated with honors in aerospace engineering from The Pennsylvania State University in May 2021. Here, I 
+                    performed two years of academic research; one year in biomedical engineering and one year in fluid mechanics.
+                    I had the opportunity to intern for an aircraft structures company in 2019 and complete the pre-medicine
+                    curriculum. I wrapped up my undergraduate career by completing a thesis for my fluid mechanics research and 
+                    presented it at the AIAA Regional Conference.
+                </p>
                 </div>
             <div class="service">
-                <h3>Work</h3>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <h3>Stock Trader</h3>
+                <p>I am a CANSLIM style swing trader with approximately 6 years of experience in the financial markets. I 
+                    continue to extensively study the methodologies developed by market wizards like William J. O'Neil,
+                    Mark Minervini, Nicolas Darvas, Stan Weinstein, and more. My thoughts, analyses, and trading can be followed
+                    by keeping up with me on Twitter. I am interested in financial modeling and trading programs that perform
+                    time series analysis, backtesting, and machine learing. I plan to eventually test my own system in a small 
+                    algorithmic trading account to see the extent to which it can be automated.
+                </p>
                 </div>
             <div class="service">
-                <h3>Work</h3>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <h3>Builder</h3>
+                <p>I spend a bulk of my time building small projects mostly by website and app development. I am working to 
+                    expand my skills in the process of seeing my ideas come to fruition. I had built a stock portfolio tracker 
+                    that focuses on risk management, a goal managing platform that helps users break down large goals into doable
+                    tasks, and I am currently working on building a productivity tracker. I also spend some time working on financial 
+                    models and trading related programs for fun. My goal is to see a product through from start to finish and take it 
+                    to market. I want to repeat the process and keep working on bigger and bigger projects.
+                </p>
                 </div>
                 </div>
 
@@ -292,13 +546,19 @@ nav { display: none; }
 
     <section class="about-me" id="about">
         <h2 class="section__title section__title-about">Who I am</h2>
-        <p class="section__subtitle section__subtitle--about"></p>
+        <p class="section__subtitle section__subtitle--about">Engineer | Trader | Builder</p>
 
         <div class="about-me__body">
-            <p></p>
-            <p></p>
+            <p>My biggest interest is advancing technology in heart disease, specifically vascular stenosis, thrombosis, aneurysm, dysrhythmia, 
+                and myocardial dysfunction as well as the use of total artificial heart (TAH) replacements. Computational fluid dynamics and 
+            neural networks can be applied to irregular blood blow and lead us to solutions in improving treatment. My goal is to work on projects 
+            like these.</p>
+            <p>My other interests consist of robotic medical devices like the Da Vinci machine, robotic prosthetic limbs, medical devices that 
+                can be used in less than 1g environments like the ISS and Mars, financial modeling, algorithmic trading, and supersonic commercial
+                flight.
+            </p>
         </div>
-        <img src="img1.jpeg" alt="someting cool">
+        <img src="personal-website/portfolio-images/vinci.png" class="davinci"alt="Da Vinci robot">
     </section>
 
     <!--work-->
@@ -307,46 +567,71 @@ nav { display: none; }
         <p class="section__subtitle"></p>
 
         <div class="portfolio">
-            <a href="#" class="portfolio__item">
-                <img src="img2.jpeg" alt="" class="portfolio__img">
+            <a href="portfolio-item.html" class="portfolio__item">
+                <img src="personal-website/portfolio-images/trading.png" alt="" class="portfolio__img"><!--trade tracker-->
             </a>
-            <a href="#" class="portfolio__item">
-                <img src="img4.jpeg" alt="" class="portfolio__img">
+            <a href="portfolio-item2.html" class="portfolio__item">
+                <img src="personal-website/portfolio-images/micro.png" alt="" class="portfolio__img"><!--goal tracker-->
             </a>
-            <a href="#" class="portfolio__item">
-                <img src="img5.jpeg" alt="" class="portfolio__img">
+            <a href="portfolio-item3.html" class="portfolio__item">
+                <img src="personal-website/portfolio-images/rbc.png" alt="" class="portfolio__img"><!--rbc app-->
             </a>
-            <a href="#" class="portfolio__item">
-                <img src="img6.jpeg" alt="" class="portfolio__img">
+            <a href="portfolio-item4.html" class="portfolio__item">
+                <img src="personal-website/portfolio-images/nn.png" alt="" class="portfolio__img"><!--LSTM NN price prediction-->
             </a>
-            <a href="#" class="portfolio__item">
-                <img src="img7.jpeg" alt="" class="portfolio__img">
+            <a href="portfolio-item5.html" class="portfolio__item">
+                <img src="personal-website/portfolio-images/socket.png" alt="" class="portfolio__img"><!--prosthetic socket research-->
             </a>
-            <a href="#" class="portfolio__item">
-                <img src="img8.jpeg" alt="" class="portfolio__img">
+            <a href="portfolio-item6.html" class="portfolio__item">
+                <img src="personal-website/portfolio-images/corner1.png" alt="" class="portfolio__img"><!--wind tunnel-->
             </a>
-            <a href="#" class="portfolio__item">
-                <img src="img9.jpeg" alt="" class="portfolio__img">
+            <a href="portfolio-item7.html" class="portfolio__item">
+                <img src="personal-website/portfolio-images/rrt.png" alt="" class="portfolio__img"><!--RRT-->
             </a>
-            <a href="#" class="portfolio__item">
-                <img src="img10.jpeg" alt="" class="portfolio__img">
-            </a>
-            <a href="#" class="portfolio__item">
-                <img src="img11.jpeg" alt="" class="portfolio__img">
+            <a href="portfolio-item8.html" class="portfolio__item">
+                <img src="personal-website/portfolio-images/fb.png" alt="" class="portfolio__img"> <!--FB prophet-->
             </a>
         </div>
     </section>
 
     <!--Footer-->
 
-    <footer>
-        <a href="mailto:jasonfink09@gmail.com" class="footer-link">jasonfink09@gmail.com</a>
-        <ul class="social-list">
-            <li class="social-list__item"><a class="social-list__link" href="https://codepen.io">a</a></li>
-            <li class="social-list__item"><a class="social-list__link" href="https://codepen.io">b</a></li>
-            <li class="social-list__item"><a class="social-list__link" href="https://codepen.io">c</a></li>
-            <li class="social-list__item"><a class="social-list__link" href="https://codepen.io">d</a></li>
-        </ul>
+    <footer class="footer">
+        <a href="mailto:jasonfink09@gmail.com" class="footer__link">jasonfink09@gmail.com</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://www.linkedin.com/in/jason-fink-a7aa19170/" target="_blank">
+                        <i class="fa-brands fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://twitter.com/Jason_Fink9" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://github.com/jfink09" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
     </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelectorAll('.nav__link')
+
+        navToggle.addEventListener('click', () => {
+            document.body.classList.toggle('nav-open');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.body.classList.remove('nav-open');
+            })
+        })
+
+    </script>
+
     </body>
 </html>
