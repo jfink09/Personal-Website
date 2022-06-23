@@ -414,8 +414,8 @@
         </section>
         
         <div class="portfolio-item-individual">
-            <p>I created a program to forcast future values using Facebook Prophet. I split the time series into a training and a test set. The training years 
-                were from 2000 to 2004 and the test year was 2005. I used a additive seasonality technique which causes the behavior to make constant (linear) 
+            <p>I created a program to forecast future values using Facebook Prophet. I split the time series into a training and a test set. The training years 
+                were from 2000 to 2004 and the test year was 2005. I used an additive seasonality technique which causes the behavior to make constant (linear) 
                 changes over time. In other words, it changes by the same amount linearly. I then added monthly seasonality which uses a regular pattern that 
                 recurs monthly in data that occurs more frequently than monthly such as the daily gold prices. I used scikit-learn to fit the training data. I 
                 based my predictions on a fitted model that I created by applying the make_future_dataframe() method for one year and then created the predictions 
@@ -426,6 +426,7 @@
                 the time scale caused the noise to wash out the signal as seen in the image below. The weekly signal was more dampened than the monthly signal which 
                 was more dampened than the yearly signal. I finally performed a performance evaluation of the fitted model by merging the test set with the forecasts.
             </p>
+            <img src="personal-website/portfolio-images/trend.png" alt="">
             <p>Below is a screenshot of the predicted price action for gold in 2005 and below that is the real price action for the GLD gold ETF in 2005. The 
                 accuracy for the prediction was very good. In both images, you see an initial dip at the beginning of the year and then a lower low in February. 
                 Then you see a rally into March and sideways action with similar peaks and troughs until September where the price starts heading higher for the 
@@ -433,8 +434,8 @@
             </p>
             <img src="personal-website/portfolio-images/predicted.png" alt="">
             <img src="personal-website/portfolio-images/real.png" alt="">
-            <p>I learned how to apply time series modeling and forcasting in Python by doing this project. I also learned that Facebook offers a free library 
-                called Facebook Prophet to perform forcasting. I also learned about different forms of seasonality and a little bit about scikit-learn. By doing 
+            <p>I learned how to apply time series modeling and forecasting in Python by doing this project. I also learned that Facebook offers a free library 
+                called Facebook Prophet to perform forecasting. I also learned about different forms of seasonality and a little bit about scikit-learn. By doing 
                 many financial and stock related programs in Python, I had become fairly comfortable with Pandas and NumPy.
             </p>
             <p>

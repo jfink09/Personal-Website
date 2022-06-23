@@ -416,22 +416,23 @@
         
         <div class="portfolio-item-individual">
             <p>I am very interested in trading stocks and neural networks, so I decided to combine the two disciplines and try to make an LSTM recurrent
-                neural network (RNN). This was a very basic and therefore not very reliable neural network because I only trained it using sixty days of
-                stock prices. On th sixty-first day, the predictions begin. I used Keras to build the neural network and used a regression deep learning 
-                model. I assigned random weights and biases to predict future prices. I used a dropout layer that randomly sets input units to zero with 
-                a frequency rate at each step during training time to prevent overfitting issues due to noise in the data. If inputs are not set to zero, 
-                they will scale up by 1/(1 - rate) where the rate is a floating variable with the range [0,1]. Therefore, dropout is a regularisation 
-                technique that makes modifications to the algorithm so that the model can generalize better to improve the model's performance on unseen data.
+                neural network (RNN) that predicts stock prices. This was a very basic and therefore not very reliable neural network because I only 
+                trained it using sixty days of stock prices. On the sixty-first day, the predictions begin. I used Keras to build the neural network and 
+                used a regression deep learning model. I assigned random weights and biases to predict future prices. I used a dropout layer that randomly 
+                sets input units to zero with a frequency rate at each step during training time to prevent overfitting issues due to noise in the data. If 
+                inputs are not set to zero, they will scale up by 1/(1 - rate) where the rate is a floating variable with the range [0,1]. Therefore, dropout 
+                is a regularization technique that makes modifications to the algorithm so that the model can generalize better to improve the model's 
+                performance on unseen data.
             </p>
             <img class="stock" src="personal-website/portfolio-images/rnn.png" alt="">
-            <p>The model consisted of four LSTM layers with some dropout regularisation and an output layer. I compiled the RNN using the Adam optimizer
+            <p>The model consisted of four LSTM layers with some dropout regularization and an output layer. I compiled the RNN using the Adam optimizer
                 instead of a classical stochastic gradient descent procedure. The Adam optimizer uses ADAgrad, a gradient-based optimization algorithm and 
                 RMSprop, an extension of ADAgrad and another gradient-based optimization technique. ADAgrad adapts the learning rate component-wise to the 
                 parameters by incorporating knowledge of past observations and RMSprop uses a decaying average of partial gradients in the adaptation of 
                 the step size for each parameter. After fitting the RNN to its training set, I got eight days of predicted stock prices.
             </p>
             <p>This was my first deep learning project, and I learned a ton. I learned how LSTM RNNs worked both theoretically and physically. I also learned 
-                about Keras and about algorithms that may be applied to stock prices and time series analysis.
+                about Keras and about algorithms that may be applied to stock price and time series analysis.
             </p>
             <p>
                 Links I referenced: <br><br> <a class="link" href="https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/" target="_blank">https://machinelearningmastery.com</a>
