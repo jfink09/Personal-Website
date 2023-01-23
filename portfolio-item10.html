@@ -403,43 +403,23 @@
 
         <section class="intro">
             <h1 class="section__title section__title--intro">
-                Ice Core<strong>Mars Rover</strong>
+                Webapp<strong>DeepFundus</strong>
             </h1>
-            <p class="section__subtitle section__subtitle--intro">Rapidly-Exploring Random Tree Algorithm</p>
-            <img src="personal-website/portfolio-images/rrtcode.png" alt="" class="intro__img">
+            <p class="section__subtitle section__subtitle--intro">deepfundus.com</p>
+            <img src="personal-website/portfolio-images/training.png" alt="" class="intro__img">
         </section>
         
         <div class="portfolio-item-individual">
-            <p>I created a rapidly-exploring random tree (RRT) algorithm for a Mars ice core retrieval mission within the Arcadia Planitia region. 
-                A rover would be deployed to travel from the landing location to the ice locations to retrieve the ice samples. The algorithm was 
-                completed via Matlab and served the purpose of providing a visualization of the path that the sample collection vehicle (the rover) 
-                will travel from one location to another. Another purpose of the algorithm was path and cost optimization. The algorithm attempted 
-                to calculate the optimal path by creating nodes and branches in the form of a path planning tree. It calculated the path tree by 
-                forming random nodes extending outward from the starting location to the destination location i.e. from one ice location to the next. 
-                Utilizing the optimized path will allow the mission to save on costs, time, power, and will allow the rover to travel around obstacles. 
-                An important purpose of RRT algorithms is for the rover to find optimized paths around obstacles. The obstacles that the rover is likely 
-                to run into when traveling from one location to another may be large rocks or boulders, crevasses, or large changes in elevation such as 
-                small or large cliffs. The program had a defined starting state (the landing and takeoff location) and a defined goal (the ice deposits). 
-                As the rover traveled from one ice site to another, the previous goal became the new starting point. Random node generation was used to 
-                guess if its path is the optimal path otherwise it will continue making branches of nodes until it finds the path. Prior to path planning, 
-                the rover knows its starting location and the end location (the location of the ice samples). However, the rover does not know its path 
-                until the program finishes running. The planning tree utilizes the A* algorithm for path and cost optimization. A* formulates its path by 
-                utilizing its starting node to create branches of nodes in order to find the shortest path. A* may also be useful when designing paths to 
-                save costs or time. We inherently accomplish this by looking for the shortest path. The branches grow one node at a time until its termination 
-                criteria, the ice sites, are recognized. The following equation shows how cost is taken into account in A*, f(n) = g(n) + h(n) where f(n), the 
-                total estimated cost through node n, is the sum of g(n), the cost of the path from its starting node to node n, and h(n), a heuristic function, 
-                is a guess of the estimated cost of the cheapest path from node n to the goal.
+            <p>I am currently working on building a deep learning platform for retinal disease prediction. Users can upload images of funduscopic images and the 
+                convolutional neural network will predict the disease. This is a work in progress as I only have six diseases and normal fundus trained. The diseases 
+                I trained are diabetic retinopathy, pathological myopia, retinitis pigmentosa, macular degeneration, central retinal vein occlusion (CRVO), and laser spots
+                which is not a disease. Laser spots form on the retina after someone undergoes retinal laser surgery. Even though this is not a disease, I am training the 
+                model to recognize it as a disease so that it can classify it in another way than normal as the appearance is different.
             </p>
-            <img src="personal-website/portfolio-images/rrtpic.png" alt="">
-            <p>The red tree depicted in the images are the attempts of finding the optimal path, but when the optimal path is found, it is highlighted in black. 
-                The black line is what the rover registers as the path it needs to travel. Once the rover understands this path, it may begin traveling to the 
-                destination. The black path is the main path of interest and is the cost efficient path taken into account in A*. One downside to the program was 
-                the time it took to run the program and the lag in each run. Because Matlab ran the RRT slowly, the node creation was not as fluid as was imagined. 
-                The code would freeze and show many nodes being added at a time instead of a single node at a time.
-            </p>
-            <p>For this project, I learned how RRT algorithms worked in Matlab. I had used Matlab many times throughout my undergraduate career, but had never attempted 
-                an RRT algorithm. I learned robotic motion planning where, in this case, the robot was the Mars rover. I also learned how to apply important metrics to 
-                the Mars mission by applying the A* algorithm and figuring out how the Mars rover could save time, money, and power by using path planning.
+            <img class="stock" src="personal-website/portfolio-images/deepfundus.png" alt="">
+            <p>I plan to increase the accuracy of my current model by making each disease dataset larger. I will also try transfer learning with other models. I have tried
+                TinyVGG, EfficientNet B0, and EfficientNet B7. EfficientNet B0 works the best so far. I would like to try ResNet50 next since many published medical projects
+                involving deep learning on medical images also used this model. This is my first project involving deep learning and I am learning a lot about it.
             </p>
         </div>
         

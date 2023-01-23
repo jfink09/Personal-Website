@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/snell-roundhand" rel="stylesheet">
+                
         <script src="https://kit.fontawesome.com/88f8deda0e.js" crossorigin="anonymous"></script>
 
     <style>
@@ -23,9 +25,9 @@
     --fw-reg: 300;
     --fw-bold: 900;
     
-    --clr-light: #3f3fbc;
+    --clr-light: #dde1e7;
     --clr-dark: #0d0d0def;
-    --clr-accent: #e0ef4d;
+    --clr-accent: #dde1e7;
     
     --fs-h1: 3rem;
     --fs-h2: 2.25rem;
@@ -84,6 +86,8 @@ strong { font-weight: var(--fw-bold) }
     letter-spacing: 2px;
     font-weight: var(--fw-bold);
     transition: transform 200ms ease-in-out;
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+    border-radius: 1em;
 }
 
 .btn:hover {
@@ -109,7 +113,8 @@ section {
 }
 
 .section__title {
-    margin-bottom: 0.25em;
+    margin-bottom: 0.50em; /*was 0.25em*/
+    /*font-family: 'Snell Roundhand', sans-serif;*/
 }
 
 .section__title--intro {
@@ -129,7 +134,7 @@ section {
 .section__subtitle--about {
     background: var(--clr-accent);
     padding: 0.25em 1em;
-    font-family: var(--ff-secondary);
+    font-family: var(--ff-secondary);                                        
     margin-bottom: 1em;
 }
 
@@ -216,11 +221,10 @@ header {
     display: block;
     position: relative;
 }
-
 .hamburger,
 .hamburger::before,
 .hamburger::after {
-    background: var(--clr-accent);
+    background: rgb(255, 0, 0);
     width: 2em;
     height: 3px;
     border-radius: 1em;
@@ -252,6 +256,7 @@ header {
 
 .section__subtitle--intro {
     display: inline-block;
+    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
 }
 
 @media (min-width: 600px) {
@@ -287,11 +292,11 @@ header {
 /*  My services section  */
 
 .my-services {
-    background-color: var(--clr-dark);
-    background-image: url(personal-website/portfolio-images/desert.png);
+    background-color: var(--clr-light);
+    /*background-image: url(personal-website/portfolio-images/desert.png);*/
     background-size: cover;
     background-blend-mode: multiply;
-    color: var(--clr-light);
+    color: var(--clr-dark);
     text-align: center;
 }
 
@@ -311,12 +316,18 @@ header {
 }
 
 .services {
-    margin-bottom: 4em;
+    margin-bottom: 2em;
 }
 
 .service {
     max-width: 500px;
     margin: 0 auto;
+    background-color: var(--clr-light);
+    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+    padding: 10px; /*added*/
+    border-radius: 1em; /*added*/
+    font-family: var(--ff-secondary); /*added*/
+    font-size: 15px; /*added*/
 }
 
 @media (min-width: 800px) {
@@ -332,6 +343,8 @@ header {
     }
 }
 
+/* About me section */
+
 .about-me {
     max-width: 1000px;
     margin: 0 auto;
@@ -339,6 +352,12 @@ header {
 
 .about-me__img {
     box-shadow: var(--bs);
+}
+
+.about-me__body p {
+    padding: 10px;
+    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94, 104, 121, 0.3);
+    border-radius: 0.25em;
 }
 
 
@@ -381,19 +400,22 @@ header {
 /* My Work */
 
 .my-work {
-    background-color: var(--clr-dark);
-    color: var(--clr-light);
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
     text-align: center;    
 }
 
 .portfolio {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /*use 300px afer more projects get added*/
+    grid-gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /*use 300px afer more projects get added*/
 }
 
 .portfolio__item {
     background: var(--clr-accent);
     overflow: hidden;
+    box-shadow: -10px -10px 18px rgba(255,255,255,0.9), 10px 10px 18px rgba(94, 104, 121, 0.9);
+    border-radius: 1em;
 }
 
 .portfolio__img {
@@ -471,6 +493,13 @@ header {
     margin-left: auto;
     margin-right: auto;
 }
+
+.link {
+    color: var(    --clr-dark);
+    text-decoration: none;
+    font-weight: var(--fw-bold);
+}
+
     </style>
     </head>
 
@@ -493,20 +522,20 @@ header {
         </header>
 
         <!--Introduction-->
-
         <section class="intro" id="home">
             <h1 class="section__title section__title--long">
-                Hi, I am <strong>Jason Fink</strong>
+                <strong>Jason&nbsp;Fink</strong>
             </h1>
             <p class="section__subtitle section__subtitle--intro">Aerospace Engineer | Stock Trader</p>
-            <img src="personal-website/portfolio-images/profile.png" alt="A picture of me" class="intro__img">
+            <!--<img src="personal-website/portfolio-images/profile.png" alt="A picture of me" class="intro__img">-->
+            
         </section>
 
 
     <!--My services-->
 
     <section class="my-services" id="services">
-        <h2 class="section__title section__subtitle--services">About What I Do</h2>
+        <!--<h2 class="section__title section__subtitle--services">About What I Do</h2>-->
         <div class="services">
             <div class="service">
                 <h3>Aerospace Engineer</h3>
@@ -540,31 +569,46 @@ header {
                 </div>
                 </div>
 
-        <a href="#work" class="btn">My Work</a>
+        <a href="#work" class="btn">My Projects</a>
     </section>
 
     <!--About me-->
 
     <section class="about-me" id="about">
-        <h2 class="section__title section__title-about">Who I am</h2>
-        <p class="section__subtitle section__subtitle--about">Engineer | Trader | Builder</p>
+        <h2 class="section__title section__title-about">Current Work</h2>
+        <!--<p class="section__subtitle section__subtitle--about">Engineer | Trader | Builder</p>-->
 
         <div class="about-me__body">
-            <p>My biggest interest is advancing technology in heart disease, specifically vascular stenosis, thrombosis, aneurysm, dysrhythmia, 
-                and myocardial dysfunction as well as the use of total artificial heart (TAH) replacements. Computational fluid dynamics (CFD) and 
-            neural networks can be applied to building irregular blood flow models and lead us to solutions in improving treatment. My goal is to work on projects 
-            like these.</p>
-            <p>My other interests consist of robotic medical devices like the Da Vinci machine, robotic prosthetic limbs, medical devices that 
-                can be used in less than 1g environments like on the ISS and Mars, technology that increases patient knowledge about their symptoms, 
-                treatments, and medications, financial modeling, algorithmic trading, and supersonic commercial flight.
+            <p>I am currently working as an Ophthalmology Medical Technician while I apply to medical schools with the intention of starting 
+                this fall. We do a lot of different scans on patients, and these scans led me to a project I am currently working on called
+                DeepFundus. This is a deep learning platform for medical students, residents, and ophthalmologists to use for retinal disease
+                prediction. Users can upload funduscopic images and the model will predict what disease it is. I plan to extend this to occular 
+                coherence tomography (OCT) scans once my model is trained well on the majority of the major retinal diseases that can be diagnosed 
+                by funduscopic image testing.
+            </p>
+            <p>I am also actively trading and managing my portfolio everyday. This year I have many goals, but the most important ones revolve around 
+                excellent risk management, sticking to my routines and my buy and sell rules, tracking my trades in my tracker and log, marking up every trade, 
+                and market outperformance. I am also attempting to complete the TraderLion chart challenge which will require me to markup a chart 
+                everyday for the year. With this challenge, I am marking up weekly charts from the 1920s to the 2000s. My plan is to focus on charts 
+                from decades ago to learn more about past market history that I did not partake in. Also, I am making an effort to include charts of 
+                topping patterns and some of history's greatest shorting opportunities because we very rarely see chart markups for the short side.
+                Because weekly charts do not capture the entry points as well as daily charts, I am also marking up the entry on each chart's daily 
+                chart. This is to learn what to expect for an ideal entry from the daily timeframe. My charts can be followed on my Twitter page
+                <a class="link" href="https://twitter.com/Jason_Fink9" target="_blank">Jason_Fink9</a>. I enjoy posting charts on Twitter as it documents charts I am watching or thinking about at the time I post them.
+            </p>
+            <p>I enjoy spending my free time reading books about trading, philosophy, and engineering, playing piano, exercise, and meditation. I am starting 
+                to learn more about algorithmic trading and will be working on multiple algorithms. This will imporve my programming abilities and perhaps 
+                allow me to capture alpha in another way than my current discretionary methods.
             </p>
         </div>
-        <img src="personal-website/portfolio-images/vinci.png" class="davinci"alt="Da Vinci robot">
+        <!--<img src="personal-website/portfolio-images/vinci.png" class="davinci"alt="Da Vinci robot">-->
+        <!--<img src="personal-website/portfolio-images/nature.jpeg" class="davinci"alt="">-->
+        <img src="personal-website/portfolio-images/trader.jpeg" alt="" style="margin-top: 20px;">
     </section>
 
     <!--work-->
     <section class="my-work" id="work">
-        <h2 class="section__title">My Work</h2>
+        <h2 class="section__title">Some of My Projects</h2>
         <p class="section__subtitle"></p>
 
         <div class="portfolio">
@@ -594,6 +638,9 @@ header {
             </a>
             <a href="portfolio-item9.html" class="portfolio__item">
                 <img src="personal-website/portfolio-images/rocket.png" alt="" class="portfolio__img"> <!--FB prophet-->
+            </a>
+            <a href="portfolio-item10.html" class="portfolio__item">
+                <img src="personal-website/portfolio-images/predictions.png" alt="" class="portfolio__img"> <!--FB prophet-->
             </a>
         </div>
     </section>
